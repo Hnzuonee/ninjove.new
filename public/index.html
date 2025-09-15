@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exkluzivní Nábor - Finální verze</title>
+    <title>Secret agency</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -126,7 +126,7 @@
         .form-section { background: #111; }
         .form-group { margin-bottom: 1.5rem; text-align: left; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; }
-        .form-group input, .form-group textarea {
+        .form-group input {
             width: 100%;
             box-sizing: border-box;
             padding: 1rem;
@@ -136,7 +136,7 @@
             color: var(--text-color);
             font-size: 1rem;
         }
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus {
             outline: none;
             border-color: var(--primary-color);
         }
@@ -209,6 +209,10 @@
                     <div class="form-group">
                         <label for="contact">Kontakt (E-mail nebo Telegram)</label>
                         <input type="text" id="contact" name="contact" required placeholder="@tvojenick">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefonní číslo</label>
+                        <input type="tel" id="phone" name="phone" value="+420 " required>
                     </div>
                     <div class="form-group">
                         <label for="social">Sociální sítě (pro první dojem)</label>
