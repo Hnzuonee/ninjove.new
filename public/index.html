@@ -22,9 +22,9 @@
             100% { background-position: 0% 50%; }
         }
         
-        /* ZMĚNY PRO SNAP SCROLLING */
+        /* ZPĚT K PLYNULÉMU SKROLOVÁNÍ */
         html {
-            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -33,31 +33,18 @@
             margin: 0;
             color: var(--text-color);
             background: #000000;
-            /* Důležité pro snap scrolling */
-            height: 100vh;
-            overflow-y: scroll;
         }
 
-        /* Každá hlavní sekce bude nyní "snap point" a bude přes celou obrazovku */
-        .scroll-section {
-            height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            padding: 2rem;
-        }
-        
         .container {
             width: 90%;
             max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 0;
         }
 
         section {
             padding: 4rem 2rem;
+            margin-bottom: 2rem;
             text-align: center;
             background: rgba(20, 20, 20, 0.4);
             backdrop-filter: blur(15px);
@@ -88,6 +75,7 @@
             background: none;
             border: none;
             backdrop-filter: none;
+            padding: 6rem 1rem;
             text-align: center;
         }
         
@@ -131,16 +119,11 @@
         }
 
         .timer-bar {
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0,0,0,0.5);
             padding: 0.8rem;
             text-align: center;
             font-weight: 700;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            position: fixed; /* Timer bude stále vidět */
-            width: 100%;
-            top: 0;
-            z-index: 100;
         }
         .timer-bar .highlight {
             background: var(--primary-gradient);
@@ -225,7 +208,7 @@
             text-align: center;
         }
         .step-item {
-            padding: 2rem 0; /* Menší padding */
+            padding: 2rem 0; 
         }
         .step-number {
             font-size: 3rem;
@@ -270,8 +253,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
-            .scroll-section { padding: 1.5rem; padding-top: 5rem; /* Místo pro timer */}
-            section { padding: 2rem 1.5rem; }
+            section { padding: 3rem 1.5rem; }
         }
 
         @media (min-width: 769px) {
@@ -281,6 +263,13 @@
             }
         }
         
+        footer {
+             text-align: center; 
+             padding: 2rem; 
+             color: var(--text-muted-color); 
+             font-size: 0.9rem;
+        }
+
     </style>
 </head>
 <body>
@@ -289,31 +278,23 @@
         Tahle nabídka zmizí za: <span class="highlight">06 dní : 14h : 23m</span>
     </div>
 
-    <div class="scroll-section">
-        <div class="container">
-            <header class="hero">
-                <h1>Staň se hvězdou a začni nový život</h1>
-                <ul class="hero-benefits">
-                    <li><span>✓</span> Žádný stres s marketingem a technikou</li>
-                    <li><span>✓</span> Absolutní diskrétnost a bezpečí</li>
-                    <li><span>✓</span> Tvoje cesta k finanční svobodě</li>
-                </ul>
-                <a href="#form-section" class="cta-button">Chci nezávazně zjistit víc</a>
-            </header>
-        </div>
-    </div>
+    <div class="container">
+        <header class="hero">
+            <h1>Začni si plnit sny. My se postaráme o zbytek.</h1>
+            <ul class="hero-benefits">
+                <li><span>✓</span> Žádný stres s marketingem a technikou</li>
+                <li><span>✓</span> Absolutní diskrétnost a bezpečí</li>
+                <li><span>✓</span> Tvoje cesta k finanční svobodě</li>
+            </ul>
+            <a href="#form-section" class="cta-button">Chci nezávazně zjistit víc</a>
+        </header>
 
-    <div class="scroll-section">
-        <div class="container">
+        <main>
             <section id="ninjas">
                 <h2>Jsme nindžové OnlyFans světa.</h2>
                 <p>Nikdo o nás neví, ale jsme ti nejlepší. Teď vybíráme jen <span class="highlight-text">tři</span> nové tvůrkyně, ze kterých uděláme absolutní hvězdy a finančně je zabezpečíme. <br><strong>Jsi jedna z nich?</strong></p>
             </section>
-        </div>
-    </div>
-    
-    <div class="scroll-section">
-        <div class="container">
+            
             <section id="how-it-works">
                 <h2>Vše je jednoduché a 100% bezpečné</h2>
                 <div class="steps-grid">
@@ -334,11 +315,7 @@
                     </div>
                 </div>
             </section>
-        </div>
-    </div>
 
-    <div class="scroll-section">
-        <div class="container">
             <section id="why-us">
                 <h2>Proč my? Protože tohle nikdo jiný nenabízí.</h2>
                 <div class="features-grid">
@@ -356,12 +333,8 @@
                     </div>
                 </div>
             </section>
-        </div>
-    </div>
 
-    <div id="form-section" class="scroll-section">
-        <div class="container">
-            <section class="form-section">
+            <section id="form-section" class="form-section">
                 <div class="form-wrapper">
                     <div class="manager-photo">
                         <img src="https://images.pexels.com/photos/3756943/pexels-photo-3756943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Manažerka Aneta">
@@ -369,11 +342,11 @@
                     </div>
                 
                     <form action="/submit" method="POST">
-                        <h2>Napiš Monice. Počet míst je omezený.</h2>
-                        <p style="margin: -2rem 0 2.5rem; max-width: 100%;">Tohle je tvoje jediná šance. Vše je 100% diskrétní.</p>
+                        <h2>Napiš Anetě. Počet míst je omezený.</h2>
+                        <p style="margin: -2rem 0 2.5rem;">Tohle je tvoje jediná šance. Vše je 100% diskrétní.</p>
                     
                         <div class="form-group">
-                            <label for="name">Jméno</label>
+                            <label for="name">Jméno nebo přezdívka</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
@@ -391,7 +364,7 @@
                             <input type="tel" id="phone" name="phone" value="+420 " required>
                         </div>
                         <div class="form-group">
-                            <label for="social">Tvůj Instagram</label>
+                            <label for="social">Sociální sítě (pro první dojem)</label>
                             <input type="text" id="social" name="social" placeholder="instagram.com/profil nebo @prezdivka" required>
                         </div>
                         <div class="form-group">
@@ -406,7 +379,13 @@
                 </div>
                 <p class="scarcity-note">V tomto kole zbývají poslední 2 místa.</p>
             </section>
-        </div>
+            
+            <footer>
+                <div class="container">
+                    <p>&copy; 2025 | 100% Diskrétní Elitní Agentura</p>
+                </div>
+            </footer>
+        </main>
     </div>
 
 </body>
