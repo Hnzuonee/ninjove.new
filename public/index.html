@@ -31,7 +31,6 @@
             line-height: 1.7;
             margin: 0;
             color: var(--text-color);
-            /* ZMĚNA: Absolutně černé pozadí */
             background: #000000;
         }
 
@@ -46,7 +45,6 @@
             padding: 4rem 2rem;
             margin-bottom: 2rem;
             text-align: center;
-            /* Efekt "Mléčného Skla" zůstává */
             background: rgba(20, 20, 20, 0.4);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -173,6 +171,71 @@
             text-fill-color: transparent;
         }
 
+        /* NOVÁ SEKCE: JAK TO FUNGUJE */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .step-item {
+            padding: 2rem;
+        }
+        .step-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            background-size: 300% 300%;
+            animation: animated-gradient 4s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            line-height: 1;
+        }
+        .step-item h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        /* NOVÁ SEKCE: FOTKA U FORMULÁŘE */
+        .form-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .manager-photo {
+            text-align: center;
+        }
+        .manager-photo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 20px rgba(247, 37, 133, 0.5);
+        }
+        .manager-photo p {
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        /* ZMĚNA PRO MOBILNÍ ZAŘÍZENÍ */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 3rem 1.5rem; }
+        }
+
+        @media (min-width: 769px) {
+            .form-wrapper {
+                grid-template-columns: 200px 1fr; /* Fotka vedle formuláře na větších obrazovkách */
+                text-align: left;
+            }
+        }
+
         footer { text-align: center; padding: 2rem; color: var(--text-muted-color); font-size: 0.9rem; }
 
     </style>
@@ -180,14 +243,14 @@
 <body>
 
     <div class="timer-bar">
-        Tahle nabídka zmizí: <span class="highlight">06 dní : 14h : 23m</span>
+        Tahle nabídka zmizí za: <span class="highlight">06 dní : 14h : 23m</span>
     </div>
 
     <div class="container">
         <header class="hero">
-            <h1>Staň se hvězdou a začni nový život</h1>
-            <p>Vstup do světa, kde se o tvůj úspěch stará neviditelný tým profesionálů. Ty jsi herečka, my jsme tvůj produkční štáb.</p>
-            <a href="#form-section" class="cta-button">Chci se stát jednou z nich</a>
+            <h1>Začni si plnit sny. My se postaráme o zbytek.</h1>
+            <p>Vstup do světa, kde se o tvůj úspěch stará neviditelný tým profesionálů. Ty jsi hvězda, my jsme tvůj produkční štáb.</p>
+            <a href="#form-section" class="cta-button">Chci nezávazně zjistit víc</a>
         </header>
 
         <main>
@@ -195,60 +258,89 @@
                 <h2>Jsme nindžové OnlyFans světa.</h2>
                 <p>Nikdo o nás neví, ale jsme ti nejlepší. Teď vybíráme jen tři nové tvůrkyně, ze kterých uděláme absolutní hvězdy a finančně je zabezpečíme. <br><strong>Jsi jedna z nich?</strong></p>
             </section>
+            
+            <section id="how-it-works">
+                <h2>Vše je jednoduché a 100% bezpečné</h2>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h3>Nezávazně napíšeš</h3>
+                        <p>Vyplníš formulář níže. Je to první krok bez jakýchkoliv závazků.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h3>Vše probereme</h3>
+                        <p>Spojíme se s tebou, probereme tvoje cíle a zodpovíme všechny otázky.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h3>Začneš vydělávat</h3>
+                        <p>Pokud si plácneme, odstartujeme tvoji kariéru a cestu k finanční svobodě.</p>
+                    </div>
+                </div>
+            </section>
 
             <section id="why-us">
                 <h2>Proč my? Protože tohle nikdo jiný nenabízí.</h2>
                 <div class="features-grid">
                     <div class="feature-item">
-                        <h3>Finanční Dominance</h3>
-                        <p>Náš cíl není, abys vydělávala 'víc'. Náš cíl je, abys finančně dominovala. Používáme strategie, o kterých konkurence ani neslyšela.</p>
+                        <h3>Finanční nezávislost</h3>
+                        <p>Náš cíl je, abys byla absolutně nezávislá. Používáme strategie, o kterých konkurence ani neslyšela.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>My makáme, ty záříš</h3>
-                        <p>Zapomeň na chatování, propagaci a technické starosti. To je naše práce. Tvoje jediná role je být hvězdou před kamerou.</p>
+                        <h3>My pracujeme, ty tvoříš</h3>
+                        <p>Zapomeň na marketing a technické starosti. To je naše práce. Tvoje jediná role je být hvězdou.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Elitní Tým v Zákulisí</h3>
-                        <p>Jsme tvá soukromá armáda marketingových expertů, copywriterů a stratégů. Pracujeme ve stínech pro tvůj úspěch na výsluní.</p>
+                        <h3>Elitní tým v zákulisí</h3>
+                        <p>Jsme tvá soukromá armáda expertů. Pracujeme ve stínech pro tvůj úspěch na výsluní.</p>
                     </div>
                 </div>
             </section>
 
             <section id="form-section" class="form-section">
-                <h2>Počet míst je omezený. Hledáme právě tři nové hvězdy.</h2>
-                <p style="margin: -2rem auto 2.5rem;">Tohle je tvoje jediná šance se přihlásit. Vyplnění je 100% diskrétní a nezávazné.</p>
+                <div class="form-wrapper">
+                    <div class="manager-photo">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Manažerka Aneta">
+                        <p>Tvoje manažerka Aneta</p>
+                    </div>
                 
-                <form action="/submit" method="POST">
-                    <div class="form-group">
-                        <label for="name">Jméno nebo přezdívka</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="age" name="age" required>
-                            <label for="age">Je mi 18 let nebo více</label>
+                    <form action="/submit" method="POST">
+                        <h2>Napiš Anetě. Počet míst je omezený.</h2>
+                        <p style="margin: -2rem 0 2.5rem;">Tohle je tvoje jediná šance. Vše je 100% diskrétní.</p>
+                    
+                        <div class="form-group">
+                            <label for="name">Jméno nebo přezdívka</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact">Kontakt (E-mail nebo Telegram)</label>
-                        <input type="text" id="contact" name="contact" required placeholder="@tvojenick">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefonní číslo</label>
-                        <input type="tel" id="phone" name="phone" value="+420 " required>
-                    </div>
-                    <div class="form-group">
-                        <label for="social">Sociální sítě (pro první dojem)</label>
-                        <input type="text" id="social" name="social" placeholder="instagram.com/profil nebo @prezdivka" required>
-                    </div>
-                    <div class="form-group">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="gdpr" name="gdpr" required>
-                            <label for="gdpr">Souhlasím se zpracováním údajů dle <a href="/zasady.html" target="_blank" style="color: #f72585;">Zásad ochrany osobních údajů</a>. Chápu, že vše je diskrétní.</label>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="age" name="age" required>
+                                <label for="age">Je mi 18 let nebo více</label>
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" class="cta-button" style="width: 100%;">Odeslat a zjistit, jestli mám na to stát se hvězdou</button>
-                </form>
+                        <div class="form-group">
+                            <label for="contact">Kontakt (E-mail nebo Telegram)</label>
+                            <input type="text" id="contact" name="contact" required placeholder="@tvojenick">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefonní číslo</label>
+                            <input type="tel" id="phone" name="phone" value="+420 " required>
+                        </div>
+                        <div class="form-group">
+                            <label for="social">Sociální sítě (pro první dojem)</label>
+                            <input type="text" id="social" name="social" placeholder="instagram.com/profil nebo @prezdivka" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="gdpr" name="gdpr" required>
+                                <label for="gdpr">Souhlasím se zpracováním údajů dle <a href="/zasady.html" target="_blank" style="color: #f72585;">Zásad ochrany osobních údajů</a>.</label>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9em; opacity: 0.7;">Tvoje údaje jsou u nás v naprostém bezpečí.</p>
+                        <button type="submit" class="cta-button" style="width: 100%;">Odeslat a udělat první krok ke změně</button>
+                    </form>
+                </div>
                 <p class="scarcity-note">V tomto kole zbývají poslední 2 místa.</p>
             </section>
         </main>
