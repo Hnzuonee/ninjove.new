@@ -173,7 +173,7 @@
         <header class="hero">
             <h1>Staň se hvězdou OnlyFans.</h1>
             <p>Vstup do světa, kde se o tvůj úspěch stará neviditelný tým profesionálů. Ty jsi herečka, my jsme tvůj produkční štáb.</p>
-            <a href="#form-section" class="cta-button">Chci se stát jednou ze tří</a>
+            <a href="#form-section" class="cta-button">Chci se stát jednou z nich</a>
         </header>
 
         <main>
@@ -201,25 +201,27 @@
             </section>
 
             <section id="form-section" class="form-section">
-                <h2>Udělej první krok. Změň si život.</h2>
+                <h2>Počet míst je omezený. Hledáme právě tři nové hvězdy.</h2>
                 <p style="margin: -2rem auto 2.5rem;">Tohle je tvoje jediná šance se přihlásit. Vyplnění je 100% diskrétní a nezávazné.</p>
                 
                 <form action="/submit" method="POST">
                     <div class="form-group">
-                        <label for="name">Přezdívka</label>
+                        <label for="name">Jméno nebo přezdívka</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="age">Věk (18+)</label>
-                        <input type="number" id="age" name="age" required min="18">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="age" name="age" required>
+                            <label for="age">Je mi 18 let nebo více</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="contact">Kontakt (E-mail nebo Telegram)</label>
                         <input type="text" id="contact" name="contact" required placeholder="@tvojenick">
                     </div>
                     <div class="form-group">
-                        <label for="social">Odkaz na sociální sítě (pro první dojem)</label>
-                        <input type="text" id="social" name="social" placeholder="instagram.com/profil nebo @prezdivka">
+                        <label for="social">Sociální sítě (pro první dojem)</label>
+                        <input type="text" id="social" name="social" placeholder="instagram.com/profil nebo @prezdivka" required>
                     </div>
                     <div class="form-group">
                         <div class="checkbox-group">
@@ -229,7 +231,7 @@
                     </div>
                     <button type="submit" class="cta-button" style="width: 100%;">Odeslat a zjistit, jestli mám na to stát se hvězdou</button>
                 </form>
-                <p class="scarcity-note">Zbývají poslední 2 místa pro nové tvůrkyně.</p>
+                <p class="scarcity-note">V tomto kole zbývají poslední 2 místa.</p>
             </section>
         </main>
 
