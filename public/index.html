@@ -22,12 +22,6 @@
             100% { background-position: 0% 50%; }
         }
         
-        @keyframes animated-background {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-
         html {
             scroll-behavior: smooth;
         }
@@ -37,10 +31,8 @@
             line-height: 1.7;
             margin: 0;
             color: var(--text-color);
-            /* NOVÉ ŽIVOUCÍ POZADÍ */
-            background: linear-gradient(125deg, #1d0f2b, #2c0f38, #0d0d0d);
-            background-size: 200% 200%;
-            animation: animated-background 15s ease infinite;
+            /* ZMĚNA: Absolutně černé pozadí */
+            background: #000000;
         }
 
         .container {
@@ -54,7 +46,7 @@
             padding: 4rem 2rem;
             margin-bottom: 2rem;
             text-align: center;
-            /* NOVÝ EFEKT "MLÉČNÉHO SKLA" */
+            /* Efekt "Mléčného Skla" zůstává */
             background: rgba(20, 20, 20, 0.4);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -99,7 +91,6 @@
             margin-top: 2rem;
             transition: transform 0.2s, box-shadow 0.3s;
             border: none;
-            /* NOVÝ ZÁŘIVÝ GRADIENT */
             background: var(--primary-gradient);
             background-size: 300% 300%;
             animation: animated-gradient 4s ease infinite;
