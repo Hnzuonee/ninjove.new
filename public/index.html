@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret agency</title>
 
+    <meta name="description" content="Exkluzivní agentura hledá 3 nové tvůrkyně. Nabízíme kompletní management, diskrétnost a cestu k finanční nezávislosti. Jsi připravená na nový život?">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -22,7 +26,6 @@
             100% { background-position: 0% 50%; }
         }
         
-        /* ZPĚT K PLYNULÉMU SKROLOVÁNÍ */
         html {
             scroll-behavior: smooth;
         }
@@ -275,7 +278,7 @@
 <body>
 
     <div class="timer-bar">
-        Tahle nabídka zmizí za: <span class="highlight">06 dní : 14h : 23m</span>
+        Tahle nabídka zmizí za: <span id="countdown" class="highlight">načítání...</span>
     </div>
 
     <div class="container">
@@ -337,7 +340,7 @@
             <section id="form-section" class="form-section">
                 <div class="form-wrapper">
                     <div class="manager-photo">
-                        <img src="https://images.pexels.com/photos/3756943/pexels-photo-3756943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Manažerka Aneta">
+                        <img src="https://images.pexels.com/photos/3775131/pexels-photo-3775131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Manažerka Aneta">
                         <p>Tvoje manažerka Aneta</p>
                     </div>
                 
@@ -387,6 +390,38 @@
             </footer>
         </main>
     </div>
+
+    <script>
+        (function() {
+            const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) return;
+
+            // Nastav cílové datum - 7 dní od teď
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 7);
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) {
+                    countdownElement.innerHTML = "Nabídka vypršela";
+                    clearInterval(interval);
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `${days} dní : ${hours}h : ${minutes}m : ${seconds}s`;
+            }
+
+            const interval = setInterval(updateCountdown, 1000);
+            updateCountdown(); // Spustit hned, nečekat první sekundu
+        })();
+    </script>
 
 </body>
 </html>
