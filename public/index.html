@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exkluzivní Nábor - Verze 2</title>
+    <title>Exkluzivní Nábor - Finální verze</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -204,7 +204,7 @@
                 <h2>Udělej první krok. Změň si život.</h2>
                 <p style="margin: -2rem auto 2.5rem;">Tohle je tvoje jediná šance se přihlásit. Vyplnění je 100% diskrétní a nezávazné.</p>
                 
-                <form action="https://formspree.io/f/TVUJ_UNIKATNI_KOD" method="POST">
+                <form action="/submit" method="POST">
                     <div class="form-group">
                         <label for="name">Přezdívka</label>
                         <input type="text" id="name" name="name" required>
@@ -224,7 +224,7 @@
                     <div class="form-group">
                         <div class="checkbox-group">
                             <input type="checkbox" id="gdpr" name="gdpr" required>
-                            <label for="gdpr">Souhlasím se zpracováním údajů. Chápu, že vše je diskrétní.</label>
+                            <label for="gdpr">Souhlasím se zpracováním údajů dle <a href="/zasady.html" target="_blank" style="color: #ffc800;">Zásad ochrany osobních údajů</a>. Chápu, že vše je diskrétní.</label>
                         </div>
                     </div>
                     <button type="submit" class="cta-button" style="width: 100%;">Odeslat a zjistit, jestli mám na to stát se hvězdou</button>
