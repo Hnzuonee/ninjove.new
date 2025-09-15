@@ -12,11 +12,22 @@ export async function onRequestPost(context) {
     // 3. Vytvoříme unikátní klíč (ID) pro každý záznam
     const id = crypto.randomUUID();
 
-    // 4. Uložíme data do naší KV databáze s názvem 'PRIHLASKY'
-    //    Tento název si pak vytvoříme v nastavení Cloudflare
-    await context.env.PRIHLASKY.put(id, JSON.stringify(data));
+    // 4. Vytvoříme hezčí, čitelný formát pro uložení
+    const readableFormat = `
+Nová přihláška - ${new Date(data.submittedAt).toLocaleString('cs-CZ', { timeZone: 'Europe/Prague' })}
+==================================================
+Přezdívka:       ${data.name || 'neuvedeno'}
+Věk:              ${data.age || 'neuvedeno'}
+Kontakt:          ${data.contact || 'neuvedeno'}
+Sociální sítě:    ${data.social || 'neuvedeno'}
+Souhlas GDPR:     ${data.gdpr === 'on' ? 'Ano' : 'Ne'}
+==================================================
+`;
 
-    // 5. Přesměrujeme uživatele na děkovací stránku
+    // 5. Uložíme data do naší KV databáze v novém formátu
+    await context.env.PRIHLASKY.put(id, readableFormat);
+
+    // 6. Přesměrujeme uživatele na děkovací stránku
     const url = new URL(context.request.url);
     return Response.redirect(`${url.origin}/dekujeme.html`, 302);
 
