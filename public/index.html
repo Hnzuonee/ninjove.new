@@ -11,17 +11,21 @@
 
     <style>
         :root {
-            --bg-color: #0a0a0a;
-            --container-color: #141414;
-            --primary-gradient: linear-gradient(90deg, #ff004c, #ff4d29, #e50914, #ff004c);
-            --text-color: #f1f5f9;
-            --text-muted-color: #b1b1b1; /* O něco světlejší pro lepší kontrast */
+            --primary-gradient: linear-gradient(90deg, #f72585, #b5179e, #7209b7, #f72585);
+            --text-color: #ffffff;
+            --text-muted-color: #e0e0e0; 
         }
 
         @keyframes animated-gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes animated-background {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
         html {
@@ -32,11 +36,11 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
             margin: 0;
-            background-color: var(--bg-color);
-            /* Decentní vzor na pozadí pro luxusní vzhled */
-            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
             color: var(--text-color);
+            /* NOVÉ ŽIVOUCÍ POZADÍ */
+            background: linear-gradient(125deg, #1d0f2b, #2c0f38, #0d0d0d);
+            background-size: 200% 200%;
+            animation: animated-background 15s ease infinite;
         }
 
         .container {
@@ -49,10 +53,13 @@
         section {
             padding: 4rem 2rem;
             margin-bottom: 2rem;
-            background-color: var(--container-color);
-            border-radius: 16px;
-            border: 1px solid #2a2a2a;
             text-align: center;
+            /* NOVÝ EFEKT "MLÉČNÉHO SKLA" */
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         h1, h2 {
@@ -62,7 +69,7 @@
             color: #fff;
         }
 
-        h1 { font-size: 3.5rem; }
+        h1 { font-size: 3.5rem; text-shadow: 0 0 15px rgba(255,255,255,0.2); }
         h2 { font-size: 2.8rem; margin-bottom: 2.5rem; }
 
         p {
@@ -76,6 +83,7 @@
         .hero {
             background: none;
             border: none;
+            backdrop-filter: none;
             padding: 6rem 1rem;
             text-align: center;
         }
@@ -86,37 +94,38 @@
             font-size: 1.2rem;
             font-weight: 700;
             padding: 1rem 2.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             text-decoration: none;
             margin-top: 2rem;
             transition: transform 0.2s, box-shadow 0.3s;
             border: none;
+            /* NOVÝ ZÁŘIVÝ GRADIENT */
             background: var(--primary-gradient);
             background-size: 300% 300%;
             animation: animated-gradient 4s ease infinite;
-            box-shadow: 0 0 25px rgba(229, 9, 20, 0.6); /* Výraznější záře */
+            box-shadow: 0 0 30px rgba(247, 37, 133, 0.7);
         }
         .cta-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(255, 0, 76, 0.8); /* Ještě výraznější záře */
+            box-shadow: 0 0 50px rgba(247, 37, 133, 1);
         }
 
         .timer-bar {
-            background-color: var(--container-color);
+            background-color: rgba(0,0,0,0.5);
             padding: 0.8rem;
             text-align: center;
             font-weight: 700;
-            border-bottom: 1px solid #2a2a2a;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .timer-bar .highlight {
             background: var(--primary-gradient);
             background-size: 300% 300%;
             animation: animated-gradient 4s ease infinite;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 0, 76, 0.5);
+            text-shadow: 0 0 15px rgba(247, 37, 133, 0.5);
             margin: 0 1rem;
             font-size: 1.2rem;
         }
@@ -129,9 +138,9 @@
         }
         .feature-item {
             padding: 2rem;
-            background-color: #1a1a1a;
-            border-radius: 12px;
-            border: 1px solid #333;
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .feature-item h3 {
             margin-top: 0;
@@ -140,22 +149,22 @@
         }
         .feature-item p { font-size: 1rem; }
         
-        .form-section { background: #111; }
+        .form-section { background: rgba(0,0,0,0.3); }
         .form-group { margin-bottom: 1.5rem; text-align: left; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; color: #fff; }
         .form-group input {
             width: 100%;
             box-sizing: border-box;
             padding: 1rem;
-            background-color: #1f1f1f;
-            border: 1px solid #444;
-            border-radius: 6px;
+            background-color: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
             color: var(--text-color);
             font-size: 1rem;
         }
         .form-group input:focus {
             outline: none;
-            border-color: #E50914;
+            border-color: #f72585;
         }
         .checkbox-group { display: flex; align-items: center; }
         .checkbox-group input { width: auto; margin-right: 0.8rem; }
@@ -168,8 +177,8 @@
             background-size: 300% 300%;
             animation: animated-gradient 4s ease infinite;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-fill-color: transparent;
         }
 
@@ -244,7 +253,7 @@
                     <div class="form-group">
                         <div class="checkbox-group">
                             <input type="checkbox" id="gdpr" name="gdpr" required>
-                            <label for="gdpr">Souhlasím se zpracováním údajů dle <a href="/zasady.html" target="_blank" style="color: #E50914;">Zásad ochrany osobních údajů</a>. Chápu, že vše je diskrétní.</label>
+                            <label for="gdpr">Souhlasím se zpracováním údajů dle <a href="/zasady.html" target="_blank" style="color: #f72585;">Zásad ochrany osobních údajů</a>. Chápu, že vše je diskrétní.</label>
                         </div>
                     </div>
                     <button type="submit" class="cta-button" style="width: 100%;">Odeslat a zjistit, jestli mám na to stát se hvězdou</button>
