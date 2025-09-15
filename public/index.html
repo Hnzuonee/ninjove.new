@@ -77,6 +77,25 @@
             padding: 6rem 1rem;
             text-align: center;
         }
+        
+        /* NOVÁ SEKCE V ÚVODU */
+        .hero-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            display: inline-block;
+            text-align: left;
+        }
+        .hero-benefits li {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .hero-benefits span {
+            color: #f72585;
+            margin-right: 0.5rem;
+        }
+
 
         .cta-button {
             display: inline-block;
@@ -117,6 +136,18 @@
             text-shadow: 0 0 15px rgba(247, 37, 133, 0.5);
             margin: 0 1rem;
             font-size: 1.2rem;
+        }
+
+        /* NOVÝ STYL PRO ZVÝRAZNĚNÍ TEXTU */
+        .highlight-text {
+            font-weight: 900;
+            background: var(--primary-gradient);
+            background-size: 300% 300%;
+            animation: animated-gradient 4s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
         }
 
         .features-grid {
@@ -171,7 +202,6 @@
             text-fill-color: transparent;
         }
 
-        /* SEKCE: JAK TO FUNGUJE */
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -199,7 +229,6 @@
             color: #fff;
         }
 
-        /* SEKCE: FOTKA U FORMULÁŘE */
         .form-wrapper {
             display: grid;
             grid-template-columns: 1fr;
@@ -222,7 +251,6 @@
             margin-top: 1rem;
         }
 
-        /* PRO MOBILNÍ ZAŘÍZENÍ */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
@@ -248,15 +276,19 @@
 
     <div class="container">
         <header class="hero">
-            <h1>Začni si plnit sny. My se postaráme o zbytek.</h1>
-            <p>Vstup do světa, kde se o tvůj úspěch stará neviditelný tým profesionálů. Ty jsi hvězda, my jsme tvůj produkční štáb.</p>
+            <h1>Staň se hvězdou a začni nový život</h1>
+            <ul class="hero-benefits">
+                <li><span>✓</span> Žádný stres s marketingem a technikou</li>
+                <li><span>✓</span> Absolutní diskrétnost a bezpečí</li>
+                <li><span>✓</span> Tvoje cesta k finanční svobodě</li>
+            </ul>
             <a href="#form-section" class="cta-button">Chci nezávazně zjistit víc</a>
         </header>
 
         <main>
             <section id="ninjas">
                 <h2>Jsme nindžové OnlyFans světa.</h2>
-                <p>Nikdo o nás neví, ale jsme ti nejlepší. Teď vybíráme jen tři nové tvůrkyně, ze kterých uděláme absolutní hvězdy a finančně je zabezpečíme. <br><strong>Jsi jedna z nich?</strong></p>
+                <p>Nikdo o nás neví, ale jsme ti nejlepší. Teď vybíráme jen <span class="highlight-text">tři</span> nové tvůrkyně, ze kterých uděláme absolutní hvězdy a finančně je zabezpečíme. <br><strong>Jsi jedna z nich?</strong></p>
             </section>
             
             <section id="how-it-works">
