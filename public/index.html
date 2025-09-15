@@ -11,16 +11,11 @@
 
     <style>
         :root {
-            --bg-color: #0a0a0a;
+            --bg-color: #050505; /* Ještě tmavší pozadí */
             --container-color: #141414;
+            --primary-color: #E50914; /* Luxusní červená */
             --text-color: #f1f5f9;
             --text-muted-color: #a1a1aa;
-        }
-
-        @keyframes animated-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         html {
@@ -73,10 +68,12 @@
             background: none;
             border: none;
             padding: 6rem 1rem;
+            text-align: center; /* OPRAVA: Explicitní vycentrování */
         }
 
         .cta-button {
             display: inline-block;
+            background-color: var(--primary-color);
             color: #fff;
             font-size: 1.2rem;
             font-weight: 700;
@@ -84,16 +81,13 @@
             border-radius: 8px;
             text-decoration: none;
             margin-top: 2rem;
-            transition: transform 0.2s;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-            background: linear-gradient(90deg, #ff00c1, #ffc800, #00fff2, #ff00c1);
-            background-size: 400% 400%;
-            animation: animated-gradient 5s ease infinite;
+            transition: transform 0.2s, box-shadow 0.3s;
+            border: none;
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.4); /* Lesklý efekt */
         }
         .cta-button:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.7); /* Zvýraznění lesku */
         }
 
         .timer-bar {
@@ -104,11 +98,8 @@
             border-bottom: 1px solid #2a2a2a;
         }
         .timer-bar .highlight {
-            background: linear-gradient(90deg, #ff00c1, #ffc800, #00fff2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5); /* Lesklý efekt na text */
             margin: 0 1rem;
             font-size: 1.2rem;
         }
@@ -147,7 +138,7 @@
         }
         .form-group input:focus, .form-group textarea:focus {
             outline: none;
-            border-color: #ffc800;
+            border-color: var(--primary-color);
         }
         .checkbox-group { display: flex; align-items: center; }
         .checkbox-group input { width: auto; margin-right: 0.8rem; }
@@ -156,7 +147,7 @@
             margin-top: 2rem;
             font-weight: 700;
             font-size: 1.1rem;
-            color: #ffc800;
+            color: var(--primary-color);
         }
 
         footer { text-align: center; padding: 2rem; color: var(--text-muted-color); font-size: 0.9rem; }
@@ -226,7 +217,7 @@
                     <div class="form-group">
                         <div class="checkbox-group">
                             <input type="checkbox" id="gdpr" name="gdpr" required>
-                            <label for="gdpr">Souhlasím se zpracováním údajů dle <a href="/zasady.html" target="_blank" style="color: #ffc800;">Zásad ochrany osobních údajů</a>. Chápu, že vše je diskrétní.</label>
+                            <label for="gdpr">Souhlasím se zpracováním údajů dle <a href="/zasady.html" target="_blank" style="color: var(--primary-color);">Zásad ochrany osobních údajů</a>. Chápu, že vše je diskrétní.</label>
                         </div>
                     </div>
                     <button type="submit" class="cta-button" style="width: 100%;">Odeslat a zjistit, jestli mám na to stát se hvězdou</button>
