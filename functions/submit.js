@@ -2,37 +2,50 @@
 
 export async function onRequestPost(context) {
   try {
-    // 1. Získáme data odeslaná z formuláře
+    // --- Krok 1: Zpracování dat z formuláře ---
     const formData = await context.request.formData();
     const data = Object.fromEntries(formData);
-    
-    // 2. Připojíme k nim datum pro přehlednost
     data.submittedAt = new Date().toISOString();
-
-    // 3. Vytvoříme unikátní klíč (ID) pro každý záznam
     const id = crypto.randomUUID();
 
-    // 4. Vytvoříme hezčí, čitelný formát pro uložení
     const readableFormat = `
 Nová přihláška - ${new Date(data.submittedAt).toLocaleString('cs-CZ', { timeZone: 'Europe/Prague' })}
 ==================================================
-Přezdívka:       ${data.name || 'neuvedeno'}
-Věk:              ${data.age || 'neuvedeno'}
+Jméno/Přezdívka:  ${data.name || 'neuvedeno'}
+Věk 18+:          ${data.age === 'on' ? 'Ano' : 'Ne'}
 Kontakt:          ${data.contact || 'neuvedeno'}
+Telefon:          ${data.phone || 'neuvedeno'}
 Sociální sítě:    ${data.social || 'neuvedeno'}
 Souhlas GDPR:     ${data.gdpr === 'on' ? 'Ano' : 'Ne'}
 ==================================================
 `;
 
-    // 5. Uložíme data do naší KV databáze v novém formátu
+    // --- Krok 2: Uložení do KV databáze ---
     await context.env.PRIHLASKY.put(id, readableFormat);
 
-    // 6. Přesměrujeme uživatele na děkovací stránku
+    // --- Krok 3: Odeslání e-mailové notifikace ---
+    const resendApiKey = context.env.RESEND_API_KEY;
+    if (resendApiKey) {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${resendApiKey}`
+        },
+        body: JSON.stringify({
+          from: 'Nová Přihláška <notifikace@tvojedomena.cz>',
+          to: ['tvuj.email@seznam.cz'],
+          subject: `Nová přihláška od: ${data.name || 'Neznámý'}`,
+          text: readableFormat
+        })
+      });
+    }
+
+    // --- Krok 4: Přesměrování uživatele ---
     const url = new URL(context.request.url);
     return Response.redirect(`${url.origin}/dekujeme.html`, 302);
 
   } catch (error) {
-    // Pokud se něco pokazí, vrátíme chybovou hlášku
     return new Response('Něco se pokazilo: ' + error.message, { status: 500 });
   }
 }
