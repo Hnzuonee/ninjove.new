@@ -40,9 +40,8 @@
             padding-top: 70px; /* Místo pro přilepenou lištu */
         }
         
-        /* OPRAVENÁ PŘILEPENÁ HORNÍ LIŠTA */
         .site-header {
-            position: fixed; /* Klíčová vlastnost pro "přilepení" */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -265,7 +264,7 @@
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
             section { padding: 3rem 1.5rem; }
-            .timer-bar .highlight { font-size: 1rem; }
+            .timer-bar { font-size: 0.9em; }
             .hero { padding-top: 2rem; }
             .site-header { padding: 0.8rem 5%; }
             .site-logo img { max-height: 30px; }
@@ -294,7 +293,7 @@
             <a href="#"><img src="/logo-white.png" alt="Secret Agency Logo"></a>
         </div>
         <div class="timer-bar">
-            <span id="countdown" class="highlight">načítání...</span>
+            Tahle nabídka zmizí za: <span id="countdown" class="highlight">načítání...</span>
         </div>
     </header>
 
