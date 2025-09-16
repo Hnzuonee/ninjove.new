@@ -16,7 +16,7 @@
     <style>
         :root {
             --primary-gradient: linear-gradient(90deg, #f72585, #b5179e, #7209b7, #f72585);
-            --of-blue: #00aff0; /* Oficiální OnlyFans modrá */
+            --of-blue: #00aff0; 
             --text-color: #ffffff;
             --text-muted-color: #e0e0e0; 
         }
@@ -37,21 +37,51 @@
             margin: 0;
             color: var(--text-color);
             background: #000000;
+            padding-top: 70px; /* Místo pro přilepenou lištu */
         }
         
-        /* NOVÁ SEKCE PRO LOGO VLEVO NAHOŘE */
+        /* NOVÁ PŘILEPENÁ HORNÍ LIŠTA */
         .site-header {
-            padding: 1.5rem 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            box-sizing: border-box;
+            background: rgba(10, 10, 10, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         .site-logo img {
             max-height: 40px;
+        }
+        .timer-bar {
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .timer-bar .highlight {
+            background: var(--primary-gradient);
+            background-size: 300% 300%;
+            animation: animated-gradient 4s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(247, 37, 133, 0.5);
+            margin: 0 0.5rem;
+            font-size: 1.1rem;
         }
 
         .container {
             width: 90%;
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 0; /* Zmenšený padding */
+            padding: 4rem 0;
         }
 
         section {
@@ -87,7 +117,7 @@
             background: none;
             border: none;
             backdrop-filter: none;
-            padding: 4rem 1rem; /* Zmenšený padding */
+            padding: 4rem 1rem;
             text-align: center;
         }
         
@@ -108,7 +138,6 @@
             margin-right: 0.5rem;
         }
 
-
         .cta-button {
             display: inline-block;
             color: #fff;
@@ -128,28 +157,6 @@
         .cta-button:hover {
             transform: scale(1.05);
             box-shadow: 0 0 50px rgba(247, 37, 133, 1);
-        }
-
-        .timer-bar {
-            background-color: rgba(0,0,0,0.5);
-            padding: 0.8rem;
-            text-align: center;
-            font-weight: 700;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        .timer-bar .highlight {
-            background: var(--primary-gradient);
-            background-size: 300% 300%;
-            animation: animated-gradient 4s ease infinite;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(247, 37, 133, 0.5);
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
         }
 
         .highlight-text, .top-text {
@@ -273,8 +280,8 @@
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
             section { padding: 3rem 1.5rem; }
-            .timer-bar { font-size: 0.9em; }
-            .hero { padding-top: 2rem; } /* OPRAVA: Menší odsazení na mobilu */
+            .timer-bar .highlight { font-size: 1rem; }
+            .hero { padding-top: 2rem; }
         }
 
         @media (min-width: 769px) {
@@ -297,13 +304,12 @@
 
     <header class="site-header">
         <div class="site-logo">
-            <img src="/logo.png" alt="Secret Agency Logo">
+            <a href="#"><img src="/logo-white.png" alt="Secret Agency Logo"></a>
+        </div>
+        <div class="timer-bar">
+            Tahle nabídka zmizí za: <span id="countdown" class="highlight">načítání...</span>
         </div>
     </header>
-
-    <div class="timer-bar">
-        Tahle nabídka zmizí za: <span id="countdown" class="highlight">načítání...</span>
-    </div>
 
     <div class="container">
         <header class="hero">
@@ -420,7 +426,7 @@
             const countdownElement = document.getElementById('countdown');
             if (!countdownElement) return;
 
-            // OPRAVA: Pevně nastavené cílové datum (za týden od 16. září 2025)
+            // Pevně nastavené cílové datum
             const targetDate = new Date('2025-09-23T23:59:59').getTime();
 
             function updateCountdown() {
