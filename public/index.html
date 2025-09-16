@@ -40,9 +40,9 @@
             padding-top: 70px; /* Místo pro přilepenou lištu */
         }
         
-        /* NOVÁ PŘILEPENÁ HORNÍ LIŠTA */
+        /* OPRAVENÁ PŘILEPENÁ HORNÍ LIŠTA */
         .site-header {
-            position: fixed;
+            position: fixed; /* Klíčová vlastnost pro "přilepení" */
             top: 0;
             left: 0;
             width: 100%;
@@ -52,13 +52,14 @@
             align-items: center;
             padding: 1rem 5%;
             box-sizing: border-box;
-            background: rgba(10, 10, 10, 0.5);
+            background: rgba(10, 10, 10, 0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         .site-logo img {
             max-height: 40px;
+            display: block;
         }
         .timer-bar {
             font-weight: 700;
@@ -175,7 +176,7 @@
             font-weight: 900;
         }
 
-        .features-grid {
+        .features-grid, .steps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -187,7 +188,7 @@
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .feature-item h3 {
+        .feature-item h3, .step-item h3 {
             margin-top: 0;
             font-size: 1.5rem;
             color: #fff;
@@ -227,15 +228,8 @@
             text-fill-color: transparent;
         }
 
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-        .step-item {
-            padding: 2rem 0; 
-        }
+        .steps-grid { text-align: center; }
+        .step-item { padding: 2rem 0; }
         .step-number {
             font-size: 3rem;
             font-weight: 900;
@@ -248,11 +242,7 @@
             text-fill-color: transparent;
             line-height: 1;
         }
-        .step-item h3 {
-            margin: 1rem 0 0.5rem;
-            font-size: 1.5rem;
-            color: #fff;
-        }
+        .step-item h3 { margin: 1rem 0 0.5rem; }
 
         .form-wrapper {
             display: grid;
@@ -260,9 +250,7 @@
             gap: 3rem;
             align-items: center;
         }
-        .manager-photo {
-            text-align: center;
-        }
+        .manager-photo { text-align: center; }
         .manager-photo img {
             width: 150px;
             height: 150px;
@@ -271,10 +259,7 @@
             border: 3px solid rgba(255,255,255,0.2);
             box-shadow: 0 0 20px rgba(247, 37, 133, 0.5);
         }
-        .manager-photo p {
-            font-weight: 700;
-            margin-top: 1rem;
-        }
+        .manager-photo p { font-weight: 700; margin-top: 1rem; }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.8rem; }
@@ -282,6 +267,8 @@
             section { padding: 3rem 1.5rem; }
             .timer-bar .highlight { font-size: 1rem; }
             .hero { padding-top: 2rem; }
+            .site-header { padding: 0.8rem 5%; }
+            .site-logo img { max-height: 30px; }
         }
 
         @media (min-width: 769px) {
@@ -307,7 +294,7 @@
             <a href="#"><img src="/logo-white.png" alt="Secret Agency Logo"></a>
         </div>
         <div class="timer-bar">
-            Tahle nabídka zmizí za: <span id="countdown" class="highlight">načítání...</span>
+            <span id="countdown" class="highlight">načítání...</span>
         </div>
     </header>
 
