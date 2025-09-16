@@ -36,8 +36,8 @@ Souhlas GDPR:     ${data.gdpr === 'on' ? 'Ano' : 'Ne'}
           'Authorization': `Bearer ${resendApiKey}`
         },
         body: JSON.stringify({
-          from: 'Secret Agency <aneta@ninjove.cz>', // DŮLEŽITÉ: Doplň svoji ověřenou doménu
-          to: ['tvuj-jsem@hanzu.cz'], // DŮLEŽITÉ: Tvůj e-mail, kam to přijde
+          from: 'Secret Agency <aneta@ninjove.com>',
+          to: ['jsem@hanzu.cz'],
           subject: `Nová přihláška od: ${data.name || 'Neznámý'}`,
           text: readableFormat
         })
@@ -52,10 +52,9 @@ Souhlas GDPR:     ${data.gdpr === 'on' ? 'Ano' : 'Ne'}
               'Authorization': `Bearer ${resendApiKey}`
             },
             body: JSON.stringify({
-              from: 'Aneta | Secret Agency <aneta@ninjove.cz>', // DŮLEŽITÉ: Doplň svoji ověřenou doménu
+              from: 'Aneta | Secret Agency <aneta@ninjove.com>',
               to: [data.contact],
               subject: 'Potvrzení: Přijali jsme Tvoji přihlášku!',
-              // ZCELA NOVÁ, VYLEPŠENÁ HTML ŠABLONA E-MAILU
               html: `
                 <!DOCTYPE html>
                 <html>
