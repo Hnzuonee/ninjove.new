@@ -16,7 +16,6 @@
     <style>
         :root {
             --primary-gradient: linear-gradient(90deg, #f72585, #b5179e, #7209b7, #f72585);
-            --of-blue: #00aff0; /* Oficiální OnlyFans modrá */
             --text-color: #ffffff;
             --text-muted-color: #e0e0e0; 
         }
@@ -82,6 +81,12 @@
             padding: 6rem 1rem;
             text-align: center;
         }
+
+        /* STYL PRO LOGO */
+        .hero-logo img {
+            max-width: 120px;
+            margin-bottom: 2rem;
+        }
         
         .hero-benefits {
             list-style: none;
@@ -128,8 +133,6 @@
             text-align: center;
             font-weight: 700;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            white-space: nowrap; /* OPRAVA: Zamezí zalamování na mobilu */
-            overflow: hidden;
         }
         .timer-bar .highlight {
             background: var(--primary-gradient);
@@ -140,11 +143,11 @@
             -webkit-text-fill-color: transparent;
             text-fill-color: transparent;
             text-shadow: 0 0 15px rgba(247, 37, 133, 0.5);
-            margin: 0 0.5rem;
+            margin: 0 1rem;
             font-size: 1.2rem;
         }
 
-        .highlight-text, .top-text {
+        .highlight-text {
             font-weight: 900;
             background: var(--primary-gradient);
             background-size: 300% 300%;
@@ -153,11 +156,6 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-fill-color: transparent;
-        }
-        
-        .of-text {
-            color: var(--of-blue);
-            font-weight: 900;
         }
 
         .features-grid {
@@ -262,10 +260,9 @@
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; } /* Zmenšení pro lepší zobrazení na mobilu */
+            h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
             section { padding: 3rem 1.5rem; }
-            .timer-bar { font-size: 0.9em; } /* Zmenšení písma timeru na mobilu */
         }
 
         @media (min-width: 769px) {
@@ -292,7 +289,10 @@
 
     <div class="container">
         <header class="hero">
-            <h1>Staň se <span class="top-text">TOP</span> tvůrkyní na <span class="of-text">OnlyFans</span></h1>
+            <div class="hero-logo">
+                <img src="/logo.png" alt="Secret Agency Logo">
+            </div>
+            <h1>Začni si plnit sny. My se postaráme o zbytek.</h1>
             <ul class="hero-benefits">
                 <li><span>✓</span> Žádný stres s marketingem a technikou</li>
                 <li><span>✓</span> Absolutní diskrétnost a bezpečí</li>
@@ -349,7 +349,7 @@
             <section id="form-section" class="form-section">
                 <div class="form-wrapper">
                     <div class="manager-photo">
-                        <img src="/aneta.jpg" alt="Manažerka Aneta">
+                        <img src="https://images.pexels.com/photos/762080/pexels-photo-762080.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Manažerka Aneta">
                         <p>Tvoje manažerka Aneta</p>
                     </div>
                 
@@ -394,7 +394,7 @@
             
             <footer>
                 <div class="container">
-                    <p>&copy; 2025 | Hanzu - Le Coq Grande</p>
+                    <p>&copy; 2025 | 100% Diskrétní Elitní Agentura</p>
                 </div>
             </footer>
         </main>
@@ -405,8 +405,9 @@
             const countdownElement = document.getElementById('countdown');
             if (!countdownElement) return;
 
-            // OPRAVA: Pevně nastavené cílové datum (za týden od 16. září 2025)
-            const targetDate = new Date('2025-09-23T23:59:59').getTime();
+            // Nastav cílové datum - 7 dní od teď
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 7);
 
             function updateCountdown() {
                 const now = new Date().getTime();
@@ -414,7 +415,7 @@
 
                 if (distance < 0) {
                     countdownElement.innerHTML = "Nabídka vypršela";
-                    if(interval) clearInterval(interval);
+                    clearInterval(interval);
                     return;
                 }
 
@@ -423,11 +424,11 @@
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                countdownElement.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+                countdownElement.innerHTML = `${days} dní : ${hours}h : ${minutes}m : ${seconds}s`;
             }
 
             const interval = setInterval(updateCountdown, 1000);
-            updateCountdown(); 
+            updateCountdown(); // Spustit hned, nečekat první sekundu
         })();
     </script>
 
