@@ -55,14 +55,15 @@ Souhlas GDPR:     ${data.gdpr === 'on' ? 'Ano' : 'Ne'}
               from: 'Aneta | Secret Agency <aneta@ninjove.com>',
               to: [data.contact],
               subject: 'Potvrzení: Přijali jsme Tvoji přihlášku!',
+              // FINÁLNÍ DESIGN E-MAILU
               html: `
                 <!DOCTYPE html>
                 <html>
                 <head>
                   <style>
-                    body { font-family: 'Inter', Arial, sans-serif; margin: 0; padding: 0; background-color: #0a0a0a; color: #e0e0e0;}
-                    .container { max-width: 600px; margin: 20px auto; background-color: #141414; border-radius: 16px; border: 1px solid #2a2a2a; padding: 40px; }
-                    h2 { font-size: 24px; font-weight: 900; background: linear-gradient(90deg, #f72585, #b5179e, #7209b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+                    body { font-family: 'Inter', Arial, sans-serif; margin: 0; padding: 0; background-color: #000000; color: #e0e0e0;}
+                    .container { max-width: 600px; margin: 20px auto; background-color: rgba(20, 20, 20, 0.4); border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1); padding: 40px; }
+                    h2 { font-size: 24px; font-weight: 900; background: linear-gradient(90deg, #f72585, #b5179e, #7209b7, #f72585); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
                     p { font-size: 16px; line-height: 1.6; }
                     a { color: #f72585; text-decoration: none; font-weight: bold; }
                     .footer { font-size: 12px; color: #a1a1aa; text-align: center; margin-top: 20px; }
