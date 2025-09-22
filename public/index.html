@@ -265,6 +265,22 @@
         }
         .manager-photo p { font-weight: 700; margin-top: 1rem; }
 
+        footer {
+             text-align: center; 
+             padding: 2rem; 
+             color: #a1a1aa; 
+             font-size: 0.9rem;
+        }
+        /* STYL PRO ODKAZ V PATIČCE */
+        footer a {
+            color: #a1a1aa;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
@@ -280,13 +296,6 @@
                 grid-template-columns: 200px 1fr; 
                 text-align: left;
             }
-        }
-        
-        footer {
-             text-align: center; 
-             padding: 2rem; 
-             color: var(--text-muted-color); 
-             font-size: 0.9rem;
         }
 
     </style>
@@ -407,7 +416,7 @@
             
             <footer>
                 <div class="container">
-                    <p>&copy; 2025 | By Hanzu</p>
+                    <p>&copy; 2025 | By Hanzu | <a href="/zasady.html" target="_blank">Zásady ochrany osobních údajů</a></p>
                 </div>
             </footer>
         </main>
